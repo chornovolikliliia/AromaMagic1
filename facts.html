@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AromaMagic — Факти</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <a href="index.html">Головна</a>
+    <a href="history.html">Історія</a>
+    <a href="composition.html">Склад</a>
+    <a href="aromas.html">Аромати</a>
+    <a href="influence.html">Вплив</a>
+    <a href="selection.html">Тест</a>
+    <a href="safety.html">Безпека</a>
+    <a href="facts.html" class="active">Факти</a>
+  </nav>
+  <div class="container">
+    <h1>Цікаві факти</h1>
+    <table>
+      <tr><th>Факт</th><th>Опис</th></tr>
+      <tr><td>Соєві свічки</td><td>Горять довше за парафінові</td></tr>
+      <tr><td>Бджолиний віск</td><td>Очищує повітря</td></tr>
+      <tr><td>Лаванда</td><td>Знижує рівень стресу</td></tr>
+    </table>
+    <h2>Пошук по фактах</h2>
+    <div class="form-box">
+      <label for="searchInput">Ключове слово</label>
+      <input type="text" id="searchInput" placeholder="наприклад: лаванда" />
+      <button type="button" class="btn" onclick="searchFacts()">Знайти</button>
+      <p id="searchOut" style="margin-top:10px;color:#666;"></p>
+    </div>
+  </div>
+  <footer>© AromaMagic</footer>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AromaMagic — Аромати</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .top-bar {
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+      gap: 12px; margin-bottom: 20px; padding: 12px 16px;
+      background: #fff; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    }
+    .cart-btn {
+      background: #c78460; color: #fff; border: none; padding: 10px 16px;
+      border-radius: 8px; font-weight: 600; cursor: pointer;
+    }
+    #cartPanel {
+      display: none; margin-top: 12px; padding: 16px; background: #fffaf3;
+      border-radius: 12px; border: 1px solid #e8d9c8;
+    }
+    .card .actions { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+    .card .actions button { width: 100%; }
+    .fav-btn { background: #ddbea9 !important; color: #4a3728 !important; }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <a href="index.html">Головна</a>
+    <a href="history.html">Історія</a>
+    <a href="composition.html">Склад</a>
+    <a href="aromas.html" class="active">Аромати</a>
+    <a href="influence.html">Вплив</a>
+    <a href="selection.html">Тест</a>
+    <a href="safety.html">Безпека</a>
+    <a href="facts.html">Факти</a>
+  </nav>
+  <div class="container">
+    <h1>Світ ароматів</h1>
+
+    <div class="top-bar">
+      <div style="font-size:0.95rem;color:#666;">Каталог ароматичних свічок</div>
+      <button type="button" class="cart-btn" onclick="toggleCart()">
+        🛒 Кошик (<span id="cartCountBadge">0</span>)
+      </button>
+    </div>
+
+    <div id="cartPanel">
+      <strong>Ваш кошик</strong>
+      <div id="cartList" style="margin: 10px 0;"></div>
+      <p>Товарів: <span id="cartCount">0</span> · Сума: <span id="cartTotal">0 ₴</span></p>
+      <button type="button" class="btn" onclick="clearCart()" style="margin-top:8px;">Очистити кошик</button>
+    </div>
+
+    <div class="form-box" style="max-width:100%;">
+      <label for="scentFilter">Фільтр за групою</label>
+      <select id="scentFilter">
+        <option>Усі</option>
+        <option>Квіткові</option>
+        <option>Солодкі</option>
+        <option>Цитрусові</option>
+        <option>Деревні</option>
+      </select>
+      <button type="button" class="btn" onclick="applyFilter()">Застосувати</button>
+      <button type="button" class="btn" onclick="sortByPrice()" style="margin-left:8px;">Сортувати за ціною</button>
+      <p id="filterMsg" style="margin-top:8px;color:#666;"></p>
+      <p id="sortMsg" style="color:#666;"></p>
+    </div>
+
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin:16px 0 12px;padding:12px 16px;background:#fff3e0;border-radius:10px;border:1px solid #e8d9c8;">
+      <strong style="font-size:1.05rem;">♥ Обране: <span id="favCount" style="color:#c78460;font-size:1.3rem;">0</span></strong>
+      <span style="font-size:0.9rem;color:#666;">Натисніть «В обране» на картці свічки</span>
+    </div>
+    <div class="cards" id="aromaCards">
+      <div class="card" data-group="Квіткові">
+        <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=400&q=80" alt="Лаванда" />
+        <h3>Лаванда</h3>
+        <p>Релакс і сон</p>
+        <div class="price">180 ₴</div>
+        <div class="actions">
+          <button type="button" class="btn" onclick="addToCart('Лаванда', 180)">У кошик</button>
+          <button type="button" class="btn fav-btn" onclick="addFavorite('Лаванда')">♥ В обране</button>
+        </div>
+        <p style="margin-top:8px;"><a href="lavender-detail.html">Детальніше →</a></p>
+      </div>
+      <div class="card" data-group="Солодкі">
+        <img src="https://images.unsplash.com/photo-1603006905003-be475563bc59?w=400&q=80" alt="Ваніль" />
+        <h3>Ваніль</h3>
+        <p>Домашній затишок</p>
+        <div class="price">160 ₴</div>
+        <div class="actions">
+          <button type="button" class="btn" onclick="addToCart('Ваніль', 160)">У кошик</button>
+          <button type="button" class="btn fav-btn" onclick="addFavorite('Ваніль')">♥ В обране</button>
+        </div>
+      </div>
+      <div class="card" data-group="Цитрусові">
+        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=400&q=80" alt="Цитрус" />
+        <h3>Цитрус</h3>
+        <p>Енергія та свіжість</p>
+        <div class="price">170 ₴</div>
+        <div class="actions">
+          <button type="button" class="btn" onclick="addToCart('Цитрус', 170)">У кошик</button>
+          <button type="button" class="btn fav-btn" onclick="addFavorite('Цитрус')">♥ В обране</button>
+        </div>
+      </div>
+      <div class="card" data-group="Деревні">
+        <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400&q=80" alt="Сандал" />
+        <h3>Сандал</h3>
+        <p>Медитація і спокій</p>
+        <div class="price">210 ₴</div>
+        <div class="actions">
+          <button type="button" class="btn" onclick="addToCart('Сандал', 210)">У кошик</button>
+          <button type="button" class="btn fav-btn" onclick="addFavorite('Сандал')">♥ В обране</button>
+        </div>
+      </div>
+      <div class="card" data-group="Квіткові">
+        <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=400&q=80" alt="Троянда" />
+        <h3>Троянда</h3>
+        <p>Романтика</p>
+        <div class="price">195 ₴</div>
+        <div class="actions">
+          <button type="button" class="btn" onclick="addToCart('Троянда', 195)">У кошик</button>
+          <button type="button" class="btn fav-btn" onclick="addFavorite('Троянда')">♥ В обране</button>
+        </div>
+      </div>
+      <div class="card" data-group="Солодкі">
+        <img src="https://images.unsplash.com/photo-1603006905003-be475563bc59?w=400&q=80" alt="Кориця" />
+        <h3>Кориця</h3>
+        <p>Тепло і прянощі</p>
+        <div class="price">155 ₴</div>
+        <div class="actions">
+          <button type="button" class="btn" onclick="addToCart('Кориця', 155)">У кошик</button>
+          <button type="button" class="btn fav-btn" onclick="addFavorite('Кориця')">♥ В обране</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer>© AromaMagic</footer>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AromaMagic — Тест</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <a href="index.html">Головна</a>
+    <a href="history.html">Історія</a>
+    <a href="composition.html">Склад</a>
+    <a href="aromas.html">Аромати</a>
+    <a href="influence.html">Вплив</a>
+    <a href="selection.html" class="active">Тест</a>
+    <a href="safety.html">Безпека</a>
+    <a href="facts.html">Факти</a>
+  </nav>
+  <div class="container">
+    <h1>Підбір аромату</h1>
+    <p>Оберіть настрій — отримаєте рекомендацію.</p>
+    <div class="form-box">
+      <label>Настрій</label>
+      <select id="mood">
+        <option>Спокійний</option>
+        <option>Втомлений</option>
+        <option>Романтичний</option>
+        <option>Енергійний</option>
+      </select>
+      <label>Побажання</label>
+      <select>
+        <option>Розслаблення</option>
+        <option>Концентрація</option>
+        <option>Затишок</option>
+      </select>
+      <button type="button" class="btn" onclick="showResult()">Показати результат</button>
+    </div>
+    <h2 id="result" style="text-align:center;color:#a47148;min-height:40px;"></h2>
+  </div>
+  <footer>© AromaMagic</footer>
+  <script src="script.js"></script>
+</body>
+</html>

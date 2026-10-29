@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AromaMagic — Головна</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <a href="index.html" class="active">Головна</a>
+    <a href="history.html">Історія</a>
+    <a href="composition.html">Склад</a>
+    <a href="aromas.html">Аромати</a>
+    <a href="influence.html">Вплив</a>
+    <a href="selection.html">Тест</a>
+    <a href="safety.html">Безпека</a>
+    <a href="facts.html">Факти</a>
+  </nav>
+  <div class="container">
+    <h1>AromaMagic</h1>
+    <p style="text-align:center;color:#a47148;">Світ ароматичних свічок та затишку</p>
+    <p>Ароматичні свічки — спосіб створити атмосферу, налаштувати настрій і подбати про себе. На сайті ви знайдете історію, склад, аромати, поради з безпеки та тест для підбору ідеального запаху.</p>
+    <div class="media-box">
+      <img src="https://images.unsplash.com/photo-1603006905003-be475563bc59?w=800&q=80" alt="Свічки" />
+    </div>
+    <h2>Реєстрація</h2>
+    <form onsubmit="return checkForm(event)">
+      <label for="name">Ім'я</label>
+      <input type="text" id="name" placeholder="Ваше ім'я" />
+      <label for="email">Email</label>
+      <input type="text" id="email" placeholder="email@example.com" />
+      <button type="submit" class="btn">Зареєструватися</button>
+    </form>
+  </div>
+  <footer>© AromaMagic — світ ароматів</footer>
+  <script src="script.js"></script>
+</body>
+</html>
